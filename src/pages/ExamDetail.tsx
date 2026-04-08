@@ -29,19 +29,16 @@ export default function ExamDetail() {
     return (
       <div
         style={{ background: '#f5f0e8', minHeight: '60vh' }}
-        className="flex flex-col items-center justify-center text-center px-6 py-20"
+        className="flex flex-col items-center justify-center text-center px-4 py-20"
       >
         <div className="text-5xl mb-5">🔍</div>
-        <h1
-          style={{ fontFamily: '"Playfair Display", Georgia, serif', color: '#1a0800' }}
-          className="text-3xl font-bold mb-4"
-        >
+        <h1 style={{ fontFamily: '"Playfair Display", Georgia, serif', color: '#1a0800' }} className="text-2xl md:text-3xl font-bold mb-4">
           Exam Not Found
         </h1>
         <Link
           to="/exams"
-          style={{ fontFamily: '"IBM Plex Mono", monospace', background: 'linear-gradient(135deg, #c0392b, #962d22)' }}
-          className="text-white px-6 py-2.5 rounded-lg text-xs tracking-widest uppercase font-medium"
+          style={{ fontFamily: '"IBM Plex Mono", monospace', background: 'linear-gradient(135deg, #c0392b, #962d22)', minHeight: 44 }}
+          className="inline-flex items-center text-white px-6 py-2.5 rounded-lg text-xs tracking-widest uppercase font-medium"
         >
           ← Back to Exams
         </Link>
@@ -55,14 +52,8 @@ export default function ExamDetail() {
     <ul className="space-y-2.5">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-3">
-          <span
-            className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
-            style={{ background: accentColor }}
-          />
-          <span
-            style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#3a2a14' }}
-            className="text-sm leading-relaxed"
-          >
+          <span className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: accentColor }} />
+          <span style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#3a2a14' }} className="text-sm leading-relaxed">
             {item}
           </span>
         </li>
@@ -74,18 +65,18 @@ export default function ExamDetail() {
     <div style={{ background: '#f5f0e8' }} className="min-h-screen">
       {/* Hero band */}
       <div
-        className="relative py-12"
+        className="relative py-8 md:py-12"
         style={{
           background: 'radial-gradient(ellipse 80% 70% at 50% -5%, rgba(192,57,43,0.1) 0%, transparent 70%)',
           borderBottom: '1px solid rgba(192,57,43,0.12)',
         }}
       >
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
           {/* Back link */}
           <Link
             to="/exams"
-            style={{ fontFamily: '"IBM Plex Mono", monospace', color: '#c0392b' }}
-            className="inline-flex items-center gap-1.5 text-[11px] tracking-widest uppercase font-medium mb-6 hover:opacity-70 transition-opacity"
+            style={{ fontFamily: '"IBM Plex Mono", monospace', color: '#c0392b', minHeight: 44 }}
+            className="inline-flex items-center gap-1.5 text-[11px] tracking-widest uppercase font-medium mb-5 md:mb-6 hover:opacity-70 transition-opacity"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -93,10 +84,10 @@ export default function ExamDetail() {
             All Exams
           </Link>
 
-          {/* Exam header */}
-          <div className="flex items-start gap-5">
+          {/* Exam header — stack on mobile */}
+          <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-5">
             <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"
+              className="w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-2xl md:text-3xl flex-shrink-0"
               style={{ background: `${accentColor}15`, border: `2px solid ${accentColor}25` }}
             >
               {exam.icon}
@@ -105,7 +96,7 @@ export default function ExamDetail() {
               <div className="flex items-center gap-3 flex-wrap mb-1">
                 <h1
                   style={{ fontFamily: '"Playfair Display", Georgia, serif', color: '#1a0800' }}
-                  className="text-3xl md:text-4xl font-bold"
+                  className="text-2xl md:text-3xl lg:text-4xl font-bold"
                 >
                   {exam.shortName}
                 </h1>
@@ -121,10 +112,7 @@ export default function ExamDetail() {
                   {exam.category}
                 </span>
               </div>
-              <p
-                style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#5a4030' }}
-                className="text-base"
-              >
+              <p style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#5a4030' }} className="text-sm md:text-base">
                 {exam.name}
               </p>
             </div>
@@ -132,29 +120,24 @@ export default function ExamDetail() {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-10 flex flex-col gap-6">
-
-        {/* Eligibility */}
-        <GlassCard className="p-6">
+      {/* Content — all vertical, full width */}
+      <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col gap-4 md:gap-6">
+        <GlassCard className="p-4 md:p-6">
           {sectionLabel('Eligibility Criteria')}
           <ListSection items={exam.eligibility} />
         </GlassCard>
 
-        {/* Exam Pattern */}
-        <GlassCard className="p-6">
+        <GlassCard className="p-4 md:p-6">
           {sectionLabel('Exam Pattern')}
           <ListSection items={exam.pattern} />
         </GlassCard>
 
-        {/* Syllabus */}
-        <GlassCard className="p-6">
+        <GlassCard className="p-4 md:p-6">
           {sectionLabel('Syllabus Overview')}
           <ListSection items={exam.syllabus} />
         </GlassCard>
 
-        {/* Best Books */}
-        <GlassCard className="p-6">
+        <GlassCard className="p-4 md:p-6">
           {sectionLabel('Best Books to Study')}
           <ul className="space-y-3">
             {exam.books.map((book, i) => (
@@ -171,10 +154,7 @@ export default function ExamDetail() {
                 >
                   {i + 1}
                 </span>
-                <span
-                  style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#3a2a14' }}
-                  className="text-sm leading-relaxed"
-                >
+                <span style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#3a2a14' }} className="text-sm leading-relaxed">
                   {book}
                 </span>
               </li>
@@ -182,9 +162,8 @@ export default function ExamDetail() {
           </ul>
         </GlassCard>
 
-        {/* Tips */}
         {exam.tips.length > 0 && (
-          <GlassCard className="p-6">
+          <GlassCard className="p-4 md:p-6">
             {sectionLabel('Preparation Tips')}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {exam.tips.map((tip, i) => (
@@ -194,10 +173,7 @@ export default function ExamDetail() {
                   style={{ background: `${accentColor}07`, border: `1px solid ${accentColor}15` }}
                 >
                   <span style={{ color: accentColor }} className="text-base flex-shrink-0 mt-0.5">✦</span>
-                  <span
-                    style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#4a3020' }}
-                    className="text-sm leading-relaxed"
-                  >
+                  <span style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#4a3020' }} className="text-sm leading-relaxed">
                     {tip}
                   </span>
                 </div>
@@ -207,14 +183,15 @@ export default function ExamDetail() {
         )}
 
         {/* Back button */}
-        <div className="flex justify-center pt-4 pb-8">
+        <div className="flex justify-center pt-2 pb-6">
           <Link
             to="/exams"
             style={{
               fontFamily: '"IBM Plex Mono", monospace',
               background: 'linear-gradient(135deg, #c0392b, #962d22)',
+              minHeight: 48,
             }}
-            className="inline-flex items-center gap-2 text-white px-6 py-2.5 rounded-lg text-xs tracking-widest uppercase font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2 text-white px-6 py-3 rounded-lg text-xs tracking-widest uppercase font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />

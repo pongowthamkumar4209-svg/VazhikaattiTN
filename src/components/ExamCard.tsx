@@ -42,8 +42,9 @@ export default function ExamCard({ exam }: ExamCardProps) {
     <GlassCard className="overflow-hidden">
       {/* Card header */}
       <div
-        className="p-5 cursor-pointer select-none flex items-start justify-between gap-4"
+        className="p-4 md:p-5 cursor-pointer select-none flex items-start justify-between gap-3 md:gap-4"
         onClick={() => setExpanded(!expanded)}
+        style={{ minHeight: 72 }}
       >
         <div className="flex items-start gap-4">
           <div

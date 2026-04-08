@@ -12,7 +12,8 @@ function TopicRow({ topic }: { topic: Topic }) {
     <div className="border-b last:border-0" style={{ borderColor: 'rgba(192,57,43,0.1)' }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-5 py-3 text-left hover:bg-red-50/40 transition-colors"
+        className="w-full flex items-center justify-between px-4 md:px-5 py-3 text-left hover:bg-red-50/40 transition-colors"
+        style={{ minHeight: 48 }}
       >
         <span
           style={{ fontFamily: '"Source Serif 4", Georgia, serif', color: '#2c1810' }}
@@ -69,7 +70,8 @@ export default function TopicAccordion({ subject }: TopicAccordionProps) {
       {/* Subject header */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-white/20 transition-colors"
+        className="w-full flex items-center justify-between p-4 md:p-5 text-left hover:bg-white/20 transition-colors"
+        style={{ minHeight: 56 }}
       >
         <div className="flex items-center gap-4">
           <div
