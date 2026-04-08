@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Masthead from './components/Masthead';
 import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import After10th from './pages/After10th';
 import Exams from './pages/Exams';
@@ -33,6 +34,7 @@ function Layout() {
         </Routes>
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 }
