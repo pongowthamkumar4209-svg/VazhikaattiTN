@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import After10th from './pages/After10th';
 import Exams from './pages/Exams';
+import ExamDetail from './pages/ExamDetail';
 import Topics from './pages/Topics';
 import DegreeNext from './pages/DegreeNext';
 
@@ -25,6 +26,7 @@ function Layout() {
           <Route path="/" element={<Home />} />
           <Route path="/after-10th" element={<After10th />} />
           <Route path="/exams" element={<Exams />} />
+          <Route path="/exams/:examId" element={<ExamDetail />} />
           <Route path="/topics" element={<Topics />} />
           <Route path="/degree-next" element={<DegreeNext />} />
           <Route path="*" element={<NotFound />} />

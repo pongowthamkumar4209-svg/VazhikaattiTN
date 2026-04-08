@@ -40,8 +40,11 @@ export default function Masthead() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-white/15 border border-white/30 flex items-center justify-center text-xl group-hover:bg-white/25 transition-all">
-            🗺️
+          <div
+            className="w-10 h-10 rounded-full bg-white/15 border border-white/30 flex items-center justify-center group-hover:bg-white/25 transition-all"
+            style={{ fontSize: '1.35rem', color: '#f5c6c0', fontWeight: 700, letterSpacing: '-0.02em' }}
+          >
+            ☭
           </div>
           <div>
             <div

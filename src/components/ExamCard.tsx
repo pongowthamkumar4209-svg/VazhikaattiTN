@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Exam } from '../data/exams';
 import GlassCard from './GlassCard';
 
@@ -53,12 +54,14 @@ export default function ExamCard({ exam }: ExamCardProps) {
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3
+              <Link
+                to={`/exams/${exam.id}`}
+                onClick={(e) => e.stopPropagation()}
                 style={{ fontFamily: '"Playfair Display", Georgia, serif', color: '#1a0f00' }}
-                className="text-lg font-bold leading-tight"
+                className="text-lg font-bold leading-tight hover:text-red-700 hover:underline underline-offset-2 transition-colors"
               >
                 {exam.shortName}
-              </h3>
+              </Link>
               <span
                 style={{
                   fontFamily: '"IBM Plex Mono", monospace',

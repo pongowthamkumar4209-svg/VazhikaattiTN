@@ -99,9 +99,9 @@ export default function Footer() {
           </p>
           <p
             style={{ fontFamily: '"IBM Plex Mono", monospace' }}
-            className="text-red-200/40 text-[10px] tracking-wider"
+            className="text-red-200/60 text-[10px] tracking-wider"
           >
-            Free · Open · Always Accurate
+            Built with ❤️ by Pongowtham Kumar S
           </p>
         </div>
       </div>
