@@ -136,7 +136,6 @@ export default function Chatbot() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY as string | undefined;
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -153,22 +152,6 @@ export default function Chatbot() {
       const trimmed = text.trim();
       if (!trimmed || isLoading) return;
 
-      if (!apiKey) {
-        const errId = nextId();
-        setMessages((prev) => [
-          ...prev,
-          { role: 'user', content: trimmed, id: nextId() },
-          {
-            role: 'assistant',
-            content:
-              '⚠️ API key not configured. Add your Anthropic API key to `.env.local` as:\n\nVITE_ANTHROPIC_API_KEY=sk-ant-...\n\nThen restart the dev server.',
-            id: errId,
-          },
-        ]);
-        setInput('');
-        return;
-      }
-
       const userMsg: Message = { role: 'user', content: trimmed, id: nextId() };
       setMessages((prev) => [...prev, userMsg]);
       setInput('');
@@ -178,14 +161,9 @@ export default function Chatbot() {
       const history = [...messages, userMsg].map(({ role, content }) => ({ role, content }));
 
       try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
+        const response = await fetch('/api/chat', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': apiKey,
-            'anthropic-version': '2023-06-01',
-            'anthropic-dangerous-direct-browser-access': 'true',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             model: 'claude-sonnet-4-20250514',
             max_tokens: 1000,
@@ -218,7 +196,7 @@ export default function Chatbot() {
         setIsLoading(false);
       }
     },
-    [apiKey, isLoading, messages]
+    [isLoading, messages]
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
